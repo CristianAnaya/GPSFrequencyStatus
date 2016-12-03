@@ -27,7 +27,7 @@
         android:id="@+id/cbBackgroundLog" />
 
     <Button
-        android:text="View Log File"
+        android:text="View Log Files"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bOpenLogFile"
@@ -36,11 +36,11 @@
 
 
     <TextView
-        android:text="Location Updates / Second"
+        android:text="Location Updates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/FreqLabel"
-        tools:text="Location Updates / Second"
+        tools:text="Location Updates"
         android:textAlignment="center"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
@@ -54,7 +54,7 @@
         android:textAlignment="center"
         android:layout_below="@+id/FreqLabel"
         android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/FreqLabel" />
+        android:layout_alignStart="@+id/bOpenLogFile" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -63,8 +63,8 @@
         android:checkedButton="@+id/rbFusedListener"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/buttonStartProvider"
-        android:layout_toStartOf="@+id/FreqLabel">
+        android:layout_toStartOf="@+id/FreqLabel"
+        android:layout_alignEnd="@+id/cbActiveRequest">
 
         <RadioButton
             android:text="MockFused"
@@ -100,6 +100,22 @@
             android:layout_alignParentStart="true" />
     </RadioGroup>
 
+    <CheckBox
+        android:text="Actively Request Location?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cbBackgroundLog"
+        android:layout_alignParentStart="true"
+        android:id="@+id/cbActiveRequest" />
+
+    <TextView
+        android:text="Running"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvStatusFlag"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignEnd="@+id/radioGroup" />
+
     <TextView
         android:text="Provider Status:"
         android:layout_width="wrap_content"
@@ -108,27 +124,91 @@
         android:layout_below="@+id/radioGroup"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="Running"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvStatusFlag"
-        android:layout_below="@+id/radioGroup"
-        android:layout_toEndOf="@+id/tvLocProviderStatusLbl" />
-
     <Button
         android:text="Start Provider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonStartProvider"
-        android:layout_below="@+id/buttonStopProvider"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/tvStatusFlag"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Stop Provider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonStopProvider"
-        android:layout_below="@+id/freqUpdatesCount"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/tvStatusFlag"
+        android:layout_toEndOf="@+id/buttonStartProvider" />
+
+    <TextView
+        android:text="Bkg Service Status:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonStartProvider"
+        android:layout_alignParentStart="true"
+        android:id="@+id/tvbgServiceLbl" />
+
+    <Button
+        android:text="Start Bg Service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvbgServiceLbl"
+        android:layout_alignParentStart="true"
+        android:id="@+id/bgBackgroundServiceStart" />
+
+    <TextView
+        android:text="Not Running"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonStartProvider"
+        android:layout_alignStart="@+id/tvStatusFlag"
+        android:id="@+id/tvbgServiceStatus" />
+
+    <Button
+        android:text="Stop BG Service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvbgServiceStatus"
+        android:layout_toEndOf="@+id/cbBackgroundLog"
+        android:id="@+id/bgBackgroundServiceStop" />
+
+    <TextView
+        android:text="FG Service Status:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bgBackgroundServiceStart"
+        android:layout_alignParentStart="true"
+        android:id="@+id/tvfgservicelbl" />
+
+    <TextView
+        android:text="Not RUnning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvfgservicelbl"
+        android:layout_alignStart="@+id/bgBackgroundServiceStop"
+        android:id="@+id/tvfgServiceStatus" />
+
+    <Button
+        android:text="Start FG Service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvfgservicelbl"
+        android:layout_alignParentStart="true"
+        android:id="@+id/bfgServiceStart" />
+
+    <Button
+        android:text="Stop FG Service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/bfgServiceStart"
+        android:layout_alignStart="@+id/tvbgServiceStatus"
+        android:id="@+id/bfgServiceStop" />
+
+    <Button
+        android:text="Request Loc Perm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bRequestLocation"
+        android:layout_above="@+id/bOpenLogFile"
+        android:layout_toEndOf="@+id/tvfgServiceStatus" />
 </RelativeLayout>

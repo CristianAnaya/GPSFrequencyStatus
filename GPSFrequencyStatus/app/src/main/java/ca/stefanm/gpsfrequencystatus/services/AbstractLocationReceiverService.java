@@ -10,7 +10,8 @@ import android.support.annotation.Nullable;
  * Created by Stefan on 12/3/2016.
  */
 
-public class LocationRecieverService extends Service implements ILocationListener {
+public abstract class AbstractLocationReceiverService extends Service implements ILocationListener {
+
     @Override
     public void OnLocationChanged(Location location) {
 
@@ -19,24 +20,13 @@ public class LocationRecieverService extends Service implements ILocationListene
 
         //Analogous to the fence handler service.
 
+    }
+    
 
-
+    public void setLocationListener(ILocationListener locationListener){
 
     }
 
 
 
-
-    //The service specifies the location provider and passes a reference to itself?
-
-
-
-
-    //Needs to be in a separate process with a notification to be a foreground process.
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
 }
